@@ -1,1 +1,14 @@
-SCRIPT
+Comando executar lista de usuarios e password do iis :                                                   
+%windir%\system32\inetsrv\appcmd list site /config /xml > c:\sites.xml 
+
+
+
+// LISTAR TODOS OS SITES DO IIS USUARIO E SENHA:                                                       
+                                                                                                        
+Import-Module WebAdministration                                                                          
+                                                                                                        
+Get-ChildItem -Path IIS:\Sites | Select-Object `                                                        
+@{Label='SITE';expression={$_.name}}, `                                                                  
+@{Label='USUARIO';expression={$_.username}}, `                                                          
+@{Label='SENHA';expression={$_.password}} `                                                            
+Sort-Object 'USUARIO'  
