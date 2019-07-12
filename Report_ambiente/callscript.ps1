@@ -21,12 +21,12 @@ $s = New-PSSession -ComputerName $nototal
 
 $saida = Invoke-Command -Session $s -FilePath C:\script\script.ps1
 
-#Remove-PSSession -ComputerName $nototal
-
 $saida > c:\temp\saida.txt
 $saida | Export-Csv -Path c:\temp\saida.csv
 
 #Get-Content -Path c:\temp\saida.txt | Select-String -Pattern  'PSComputerName|RunspaceId' -NotMatch | Out-File -Path c:\temp\saida2.txt
 
-Import-Csv c:\temp\saida.csv | Select-Object Vm,Memoria,Processador,Disco_GB,IP,Cliente,Host | Out-GridHtml -FilePath C:\inetpub\consultadados.com.br\ambiente.html
+Import-Csv c:\temp\saida.csv | Select-Object Vm,Memoria,Processador,Disco_GB,IP,Cliente,Host | Out-GridHtml -Title Ambiente -FilePath C:\inetpub\consultadados.com.br\ambiente.html
 
+#Desconectar as sessoes abertas
+Get-PSSession | Disconnect-PSSession
