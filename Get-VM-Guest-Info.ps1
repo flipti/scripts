@@ -105,3 +105,4 @@ param (
 	$Properties | Add-Member Noteproperty VMOSVersion $VMOSVersion
 	$Properties | Add-Member Noteproperty VMHostname $VMHostname
 	Write-Output $Properties
+}
