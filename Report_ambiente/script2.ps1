@@ -1,5 +1,3 @@
-#script coleta  Vm, Memoria, Processador, Disco_GB, OS, IP, Cliente, Host
-
 # Source: http://www.yusufozturk.info/virtual-machine-manager/getting-virtual-machine-guest-information-from-hyper-v-server-2012r2.html
 # Usage example: Get-VMGuestInfo -VMName TEST01 -HyperVHost VMHOSTT01
 function Get-VMGuestInfo
@@ -112,6 +110,7 @@ param (
 Get-VM * | ForEach-Object {
     $VHDSize = 0;
     $OS = Get-VMGuestInfo -VMName $_.name
+	$disco = Get-VMHardDiskDrive -VMName $_.Name
        Get-VMHardDiskDrive -VMName $_.Name | ForEach-Object {
         Get-VHD -Path $_.Path | ForEach-Object {
             $VHDSize += $_.Size
@@ -125,6 +124,7 @@ Get-VM * | ForEach-Object {
       Disco_GB = ($VHDSize / 1GB)
       OS = $OS.VMOSName
       IP = $_.NetworkAdapters.ipaddresses
+	  Volume = $disco.path
       Cliente = $_.Notes
       Host = $_.computername
       
