@@ -123,8 +123,8 @@ Get-VM * | ForEach-Object {
       Processador = ($_.ProcessorCount)
       Disco_GB = ($VHDSize / 1GB)
       OS = $OS.VMOSName
-      IP = $_.NetworkAdapters.ipaddresses
-	  Volume = $disco.path
+      IP = ($_.NetworkAdapters.ipaddresses -join "`r`n")
+      Volume = ($disco.path -join "`r`n")
       Cliente = $_.Notes
       Host = $_.computername
       
