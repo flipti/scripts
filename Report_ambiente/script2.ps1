@@ -109,6 +109,7 @@ param (
 
 Get-VM * | ForEach-Object {
     $VHDSize = 0;
+    $vlan = (Get-VMNetworkAdapter -VMName $_.Name  | select -ExpandProperty VlanSetting).AccessVlanId
     $OS = Get-VMGuestInfo -VMName $_.name
 	$disco = Get-VMHardDiskDrive -VMName $_.Name
        Get-VMHardDiskDrive -VMName $_.Name | ForEach-Object {
@@ -124,6 +125,7 @@ Get-VM * | ForEach-Object {
       Disco_GB = ($VHDSize / 1GB)
       OS = $OS.VMOSName
       IP = ($_.NetworkAdapters.ipaddresses -join "`r`n")
+      VLAN = ($vlan -join "`r`n")
       Volume = ($disco.path -join "`r`n")
       Cliente = $_.Notes
       Host = $_.computername
