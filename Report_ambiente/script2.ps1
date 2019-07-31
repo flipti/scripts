@@ -120,9 +120,9 @@ Get-VM * | ForEach-Object {
      
      [pscustomobject]@{
       Vm = $_.name
-      Memoria = ($_.MemoryStartup/1GB)
-      Processador = ($_.ProcessorCount)
-      Disco_GB = ($VHDSize / 1GB)
+      Memoria = ($_.MemoryStartup/1GB) -as [int]
+      Processador = ($_.ProcessorCount) -as [int]
+      Disco_GB = ($VHDSize / 1GB) -as [int]
       OS = $OS.VMOSName
       IP = ($_.NetworkAdapters.ipaddresses -join "`r`n")
       VLAN = ($vlan -join "`r`n")
