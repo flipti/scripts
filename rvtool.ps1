@@ -2,7 +2,7 @@ Import-Module PSWriteHTML
 Import-module Dashimo
 
 # C:\Program Files (x86)\Robware\RVTools
-# rvtools.exe -u hwindows@cometa.local -p 2019_@HWin -s 192.168.6.181 -c ExportAll2csv -d d:\teste -f teste
+# rvtools.exe -u hwindows@cometa.local -p xxx -s xxx -c ExportAll2csv -d d:\teste -f teste
 
 $a = Import-Csv D:\teste\RVTools_tabvInfo.csv
 $b = Import-Csv D:\teste\RVTools_tabvCPU.csv
