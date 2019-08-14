@@ -1,0 +1,30 @@
+<#AUTOR FELIPE RODRIGUES 
+ 14/08/19
+ #>
+
+#NOME DA MAQUINA VIRTUAL
+
+$VM = 'TESTE'
+
+
+
+<#
+#COMANDOS PARA ALTERAR MEMORIA
+Stop-VM -Name $VM -Force
+
+Set-VMMemory -VMName $VM -StartupBytes 1GB
+
+Start-VM -Name $VM
+
+#>
+
+
+<#
+#COMANDOS PARA ALTERAR O DISCO
+#USANDO O RESIZEVHD, SE FOR IDE É NECESSARIO DESLIGAR A VM
+
+ 	
+Resize-VHD -Path "H:\HYPER-V\TESTE\New Virtual Hard Disk_2.vhdx" -SizeBytes 11gb
+
+
+#>
