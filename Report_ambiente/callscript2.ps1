@@ -64,3 +64,25 @@ Dashboard -Name 'Ambiente' -FilePath C:\inetpub\consultadados.com.br\ambiente2.h
 
 #Desconectar as sessoes abertas
 Get-PSSession | Disconnect-PSSession
+
+#simples password no html 
+
+
+$passhtml = @"
+<!DOCTYPE html>
+<script language=javascript>
+senha = '@mbiente';
+senhadig = prompt("Digite a senha","")
+if (senha != senhadig){
+alert('Acesso negado! Entre em contato com o Desenvolvedor');
+top.location.href='index.php';
+}
+</script>
+"@
+
+$html = Get-Content C:\inetpub\consultadados.com.br\ambiente.html
+
+
+$ambiente = -join $passhtml,$html 
+
+$ambiente > C:\inetpub\consultadados.com.br\ambiente.html
