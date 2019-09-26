@@ -13,6 +13,7 @@ Get-VM * | ForEach-Object {
       Vm = $_.name
       Memoria = ($_.MemoryStartup/1GB)
       Processador = ($_.ProcessorCount)
+      IP = $_.NetworkAdapters.ipaddresses
       Disco_GB = ($VHDSize / 1GB)
       Cliente = $_.Notes
       Host = $_.computername
