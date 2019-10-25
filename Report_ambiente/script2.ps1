@@ -125,10 +125,28 @@ Get-VM * | ForEach-Object {
       Disco_GB = ($VHDSize / 1GB) -as [int]
       OS = $OS.VMOSName
       IP = ($_.NetworkAdapters.ipaddresses -join "`r`n")
-      VLAN = ($vlan -join "`r`n")
+	  VLAN = ($vlan -join "`r`n")
       Volume = ($disco.path -join "`r`n")
       Cliente = $_.Notes
       Host = $_.computername
+      Cluster = switch ($_.computername) {
+      SECH52{"DC-ALDEOTA CLUSTER HYPER-V"}
+      SECH53{"DC-ALDEOTA CLUSTER HYPER-V"}
+      SECH54{"DC-ALDEOTA CLUSTER HYPER-V"}
+      SECH74{"DC-SERRINHA CLUSTER HYPER-V02"}
+      SECH75{"DC-SERRINHA CLUSTER HYPER-V02"}
+      SECH76{"DC-SERRINHA CLUSTER HYPER-V02"}
+      SECH77{"DC-SERRINHA CLUSTER HYPER-V02"}
+      SECH78{"DC-SERRINHA CLUSTER HYPER-V02"}
+      SECH79{"DC-SERRINHA CLUSTER HYPER-V02"}
+      SECH62{"DC-SERRINHA CLUSTER HYPER-V03"}
+      SECH63{"DC-SERRINHA CLUSTER HYPER-V03"}
+      SECH51{"DC-ALDEOTA CLUSTER-SQL"}
+      SECH60{"DC-ALDEOTA CLUSTER-SQL"}
+      SECH61{"DC-ALDEOTA CLUSTER-SQL"}
+      SECH28 {"STANDALONE"}
+      SECH87{"STANDALONE"}
+      }
       
 
      }
