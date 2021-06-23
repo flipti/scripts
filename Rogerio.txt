@@ -1,0 +1,11 @@
+Start-Transcript -Append -Path c:\temp\log.txt
+
+$Servers = Get-Content "C:\ISO\Office 365\Lista_S3DCAG-SUPER.txt"
+
+foreach ($ServerN in $Servers) {
+
+robocopy 'C:\ISO\Office 365'  "\\$ServerN\D$\Suporte\Office 365" /mt:32 /e /s /w:30 /r:2 /tee /eta 
+
+}
+
+Stop-Transcript 
