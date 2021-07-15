@@ -1,2 +1,0 @@
-isso
-os comandos
